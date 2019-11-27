@@ -1,0 +1,12 @@
+Enumeration,Attribute,JSONPath,Type,Description
+FailureType,,,,
+,TECHNICAL,,,
+,SITE,,,
+,USERACTIONREQUIRED,,,
+Range,,,,
+,0_TO_20_SECS,,,
+,20_TO_40_SECS,,,
+,40_TO_60_SECS,,,
+,60_TO_80_SECS,,,
+,80_TO_100_SECS,,,
+,GRT_THAN_100_SECS,,,

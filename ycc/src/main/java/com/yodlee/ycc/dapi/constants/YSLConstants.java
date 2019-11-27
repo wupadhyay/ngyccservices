@@ -1,0 +1,161 @@
+/*
+ * Copyright (c) 2016 Yodlee, Inc. All Rights Reserved.
+ *
+ * This software is the confidential and proprietary information of Yodlee, Inc.
+ * Use is subject to license terms.
+ */
+package com.yodlee.ycc.dapi.constants;
+/**
+ * 
+ * @author knavuluri
+ *
+ */
+public interface YSLConstants {
+
+	public static final String COB_SESSION = "cobSession";
+	public static final String USER_SESSION = "userSession";
+	public static final String COB_SESSION_TOKEN = "cobSessionToken";
+	public static final String USER_SESSION_TOKEN = "userSessionToken";
+	public static final String BASE_TYPE = "baseType";
+	public static final String REST_URL = "REST URL";
+	public static final String ORDER_BY = "orderBy";
+	public static final String PAGINATION = "pagination";
+	public static final String FROM_DATE = "fromDate";
+	public static final String TO_DATE = "toDate";
+	public static final String AND_CONDITION = "and";
+	public static final String OR_CONDITION = "or";
+	public static final String WHERE_CONDITION = " where";
+	public static final String SKIP = "skip";
+	public static final String TOP = "top";
+	public static final String SPLUNK_TOP_VOLUME = "TOP_VOLUME";
+	public static final String SPLUNK_TOP_FAILURE = "TOP_FAILURE";
+	public static final String TOP_DURATION_4H="4H";
+	public static final String TOP_DURATION_12H="12H";
+	
+	
+	public static final String GROUPBY_COBRAND = "COBRAND";
+	public static final String GROUPBY_PROVIDER = "PROVIDER";
+	public static final String INCLUDE_HISTORIC = "historic";
+	public static final String INCLUDE_LATENCY_BREAKUP = "latencyBreakup";
+	public static final String SPLUNK_HISTORIC = "historic";
+	public static final String SPLUNK_SUMMARY = "summary";
+	public static final String ERRORCODE_OVERALL = "errocodeOverall";
+	public static final String USER_TYPE = "userType";
+	public static final String SPLUNK_SUMMARY_HIST = "summaryHistoric";
+	public static final String INCLUDE_CONTAINER="container";
+	public static final String YCC_TOP_VOLUME_SITE_STATS = "YCC_TOP_VOLUME_SITE_STATS";
+	public static final String YCC_TOP_FAILURE_SITE_STATS = "YCC_TOP_FAILURE_SITE_STATS";
+	public static final String YCC_HISTORIC_REFRESH_LATENCY_BREAKDOWN_STATS = "YCC_HISTORIC_REFRESH_LATENCY_BREAKDOWN_STATS";
+	public static final String YCC_OVERALL_REFRESH_LATENCY_STATS_NEW = "YCC_OVERALL_REFRESH_LATENCY_STATS_NEW";
+	public static final String INCLUDE_CONTAINER_HISTORIC_REPORT="INCLUDE_CONTAINER_HISTORIC_REPORT";
+	public static final String INCLUDE_CONTAINER_SUMMARY_REPORT="INCLUDE_CONTAINER_SUMMARY_REPORT";
+	public static final String COBRAND_ID = "COBRAND_ID";
+	public static final String INCLUDE_ERROR_CODE = "errorcode";
+	public static final String YCC_IAV_HISTORIC_REFRESH_LATENCY_BREAKDOWN_STATS = "YCC_IAV_HISTORIC_REFRESH_LATENCY_BREAKDOWN_STATS";
+	public static final String YCC_IAV_OVERALL_REFRESH_LATENCY_STATS_NEW = "YCC_IAV_OVERALL_REFRESH_LATENCY_STATS_NEW";
+	public static final String YCC_IAV_SITE_HISTORIC_REPORT = "YCC_IAV_SITE_HISTORIC_REPORT";
+	public static final String YCC_IAV_SITE_OVERALL_SUMMARY_REPORT = "YCC_IAV_SITE_OVERALL_SUMMARY_REPORT";
+	public static final String YCC_IAV_SITE_ERRORCODE_BREAKUP_REPORT = "YCC_IAV_SITE_ERRORCODE_BREAKUP_REPORT";
+	public static final String YCC_IAV_TOP_VOLUME_SITE_STATS = "YCC_IAV_TOP_VOLUME_SITE_STATS";
+	public static final String YCC_IAV_TOP_FAILURE_SITE_STATS = "YCC_IAV_TOP_FAILURE_SITE_STATS";
+	
+	public static final String YCC_ADD_HISTORIC_REFRESH_LATENCY_BREAKDOWN_STATS = "YCC_ADD_HISTORIC_REFRESH_LATENCY_BREAKDOWN_STATS";
+	public static final String YCC_ADD_OVERALL_REFRESH_LATENCY_STATS_NEW = "YCC_ADD_OVERALL_REFRESH_LATENCY_STATS_NEW";
+	public static final String YCC_ADD_SITE_HISTORIC_REPORT = "YCC_ADD_SITE_HISTORIC_REPORT";
+	public static final String YCC_ADD_SITE_OVERALL_SUMMARY_REPORT = "YCC_ADD_SITE_OVERALL_SUMMARY_REPORT";
+	public static final String YCC_ADD_SITE_ERRORCODE_BREAKUP_REPORT = "YCC_ADD_SITE_ERRORCODE_BREAKUP_REPORT";
+	public static final String YCC_ADD_TOP_VOLUME_SITE_STATS = "YCC_ADD_TOP_VOLUME_SITE_STATS";
+	public static final String YCC_ADD_TOP_FAILURE_SITE_STATS = "YCC_ADD_TOP_FAILURE_SITE_STATS";
+	
+	public static final String YCC_CHANNEL_IAV_SITE_ERRORCODE_BREAKUP_REPORT="YCC_CHANNEL_IAV_SITE_ERRORCODE_BREAKUP_REPORT";
+	public static final String YCC_CHANNEL_IAV_SITE_OVERALL_SUMMARY_REPORT="YCC_CHANNEL_IAV_SITE_OVERALL_SUMMARY_REPORT";
+	public static final String YCC_CHANNEL_IAV_SITE_HISTORIC_REPORT="YCC_CHANNEL_IAV_SITE_HISTORIC_REPORT";
+	public static final String YCC_CHANNEL_IAV_TOP_VOLUME_SITE_STATS="YCC_CHANNEL_IAV_TOP_VOLUME_SITE_STATS";
+	public static final String YCC_CHANNEL_IAV_TOP_FAILURE_SITE_STATS="YCC_CHANNEL_IAV_TOP_FAILURE_SITE_STATS";
+	public static final String YCC_CHANNEL_IAV_HISTORIC_REFRESH_LATENCY_BREAKDOWN_STATS="YCC_CHANNEL_IAV_HISTORIC_REFRESH_LATENCY_BREAKDOWN_STATS";
+	public static final String YCC_CHANNEL_IAV_OVERALL_REFRESH_LATENCY_STATS_NEW="YCC_CHANNEL_IAV_OVERALL_REFRESH_LATENCY_STATS_NEW";
+	
+	public static final String YCC_CHANNEL_TOP_VOLUME_SITE_STATS="YCC_CHANNEL_TOP_VOLUME_SITE_STATS";
+	public static final String YCC_CHANNEL_HISTORIC_REFRESH_LATENCY_BREAKDOWN_STATS="YCC_CHANNEL_HISTORIC_REFRESH_LATENCY_BREAKDOWN_STATS";
+	public static final String YCC_CHANNEL_OVERALL_REFRESH_LATENCY_STATS_NEW="YCC_CHANNEL_OVERALL_REFRESH_LATENCY_STATS_NEW";
+	public static final String YCC_CHANNEL_TOP_FAILURE_SITE_STATS="YCC_CHANNEL_TOP_FAILURE_SITE_STATS";
+	public static final String YCC_CHANNEL_SITE_HISTORIC_REPORT="YCC_CHANNEL_SITE_HISTORIC_REPORT";
+	public static final String YCC_CHANNEL_SITE_OVERALL_SUMMARY_REPORT="YCC_CHANNEL_SITE_OVERALL_SUMMARY_REPORT";
+	public static final String YCC_CHANNEL_SITE_ERRORCODE_BREAKUP_REPORT="YCC_CHANNEL_SITE_ERRORCODE_BREAKUP_REPORT";
+	
+	public static final String YCC_COBRAND_ERRORCODE_BREAKUP_REPORT="YCC_COBRAND_ERRORCODE_BREAKUP_REPORT";
+	public static final String YCC_COBRAND_IAV_ERRORCODE_BREAKUP_REPORT="YCC_COBRAND_IAV_ERRORCODE_BREAKUP_REPORT";
+	public static final String YCC_CHANNEL_ERRORCODE_BREAKUP_REPORT="YCC_CHANNEL_ERRORCODE_BREAKUP_REPORT";
+	public static final String YCC_CHANNEL_IAV_ERRORCODE_BREAKUP_REPORT="YCC_CHANNEL_IAV_ERRORCODE_BREAKUP_REPORT";
+	public static final String YCC_COBRAND_ADD_ERRORCODE_BREAKUP_REPORT ="YCC_COBRAND_ADD_ERRORCODE_BREAKUP_REPORT";
+	public static final String YCC_ADD_CHANNEL_ERRORCODE_BREAKUP_REPORT = "YCC_ADD_CHANNEL_ERRORCODE_BREAKUP_REPORT";
+	
+	public static final String YCC_NETWORK_SITE_STATS="YCC_NETWORK_SITE_STATS";
+	public static final String YCC_NETWORK_IAV_SITE_STATS="YCC_NETWORK_IAV_SITE_STATS";
+	public static final String YCC_NETWORK_ADD_SITE_STATS="YCC_NETWORK_ADD_SITE_STATS";
+	
+	public static final String YCC_CHANNEL_ADD_OVERALL_REFRESH_LATENCY_STATS="YCC_CHANNEL_ADD_OVERALL_REFRESH_LATENCY_STATS";
+	public static final String YCC_CHANNEL_ADD_HISTORIC_REFRESH_LATENCY_BREAKDOWN_STATS="YCC_CHANNEL_ADD_HISTORIC_REFRESH_LATENCY_BREAKDOWN_STATS";
+	public static final String YCC_CHANNEL_ADD_TOP_FAILURE_SITE_STATS="YCC_CHANNEL_ADD_TOP_FAILURE_SITE_STATS";
+	public static final String YCC_CHANNEL_ADD_TOP_VOLUME_SITE_STATS="YCC_CHANNEL_ADD_TOP_VOLUME_SITE_STATS";
+	public static final String YCC_CHANNEL_ADD_SITE_HISTORIC_REPORT="YCC_CHANNEL_ADD_SITE_HISTORIC_REPORT";
+	public static final String YCC_CHANNEL_ADD_SITE_OVERALL_SUMMARY_REPORT="YCC_CHANNEL_ADD_SITE_OVERALL_SUMMARY_REPORT";
+	public static final String YCC_CHANNEL_ADD_SITE_ERRORCODE_BREAKUP_REPORT="YCC_CHANNEL_ADD_SITE_ERRORCODE_BREAKUP_REPORT";
+	
+	public static final String YCC_TOP_VOLUME_SITE_STATS_4H="YCC_TOP_VOLUME_SITE_STATS_4H";
+	public static final String YCC_TOP_VOLUME_SITE_STATS_12H="YCC_TOP_VOLUME_SITE_STATS_12H";
+	public static final String YCC_TOP_FAILURE_SITE_STATS_4H="YCC_TOP_FAILURE_SITE_STATS_4H";
+	public static final String YCC_TOP_FAILURE_SITE_STATS_12H="YCC_TOP_FAILURE_SITE_STATS_12H";
+	public static final String YCC_IAV_TOP_VOLUME_SITE_STATS_4H="YCC_IAV_TOP_VOLUME_SITE_STATS_4H";
+	public static final String YCC_IAV_TOP_VOLUME_SITE_STATS_12H="YCC_IAV_TOP_VOLUME_SITE_STATS_12H";
+	public static final String YCC_IAV_TOP_FAILURE_SITE_STATS_4H="YCC_IAV_TOP_FAILURE_SITE_STATS_4H";
+	public static final String YCC_IAV_TOP_FAILURE_SITE_STATS_12H="YCC_IAV_TOP_FAILURE_SITE_STATS_12H";
+	public static final String YCC_ADD_TOP_VOLUME_SITE_STATS_4H="YCC_ADD_TOP_VOLUME_SITE_STATS_4H";
+	public static final String YCC_ADD_TOP_VOLUME_SITE_STATS_12H="YCC_ADD_TOP_VOLUME_SITE_STATS_12H";
+	public static final String YCC_ADD_TOP_FAILURE_SITE_STATS_4H="YCC_ADD_TOP_FAILURE_SITE_STATS_4H";
+	public static final String YCC_ADD_TOP_FAILURE_SITE_STATS_12H="YCC_ADD_TOP_FAILURE_SITE_STATS_12H";
+	public static final String YCC_CHANNEL_IAV_TOP_VOLUME_SITE_STATS_4H="YCC_CHANNEL_IAV_TOP_VOLUME_SITE_STATS_4H";
+	public static final String YCC_CHANNEL_IAV_TOP_VOLUME_SITE_STATS_12H="YCC_CHANNEL_IAV_TOP_VOLUME_SITE_STATS_12H";
+	public static final String YCC_CHANNEL_IAV_TOP_FAILURE_SITE_STATS_4H="YCC_CHANNEL_IAV_TOP_FAILURE_SITE_STATS_4H";
+	public static final String YCC_CHANNEL_IAV_TOP_FAILURE_SITE_STATS_12H="YCC_CHANNEL_IAV_TOP_FAILURE_SITE_STATS_12H";
+	public static final String YCC_CHANNEL_TOP_VOLUME_SITE_STATS_4H="YCC_CHANNEL_TOP_VOLUME_SITE_STATS_4H";
+	public static final String YCC_CHANNEL_TOP_VOLUME_SITE_STATS_12H="YCC_CHANNEL_TOP_VOLUME_SITE_STATS_12H";
+	public static final String YCC_CHANNEL_TOP_FAILURE_SITE_STATS_4H="YCC_CHANNEL_TOP_FAILURE_SITE_STATS_4H";
+	public static final String YCC_CHANNEL_TOP_FAILURE_SITE_STATS_12H="YCC_CHANNEL_TOP_FAILURE_SITE_STATS_12H";
+	public static final String YCC_CHANNEL_ADD_TOP_VOLUME_SITE_STATS_4H="YCC_CHANNEL_ADD_TOP_VOLUME_SITE_STATS_4H";
+	public static final String YCC_CHANNEL_ADD_TOP_VOLUME_SITE_STATS_12H="YCC_CHANNEL_ADD_TOP_VOLUME_SITE_STATS_12H";
+	public static final String YCC_CHANNEL_ADD_TOP_FAILURE_SITE_STATS_4H="YCC_CHANNEL_ADD_TOP_FAILURE_SITE_STATS_4H";
+	public static final String YCC_CHANNEL_ADD_TOP_FAILURE_SITE_STATS_12H="YCC_CHANNEL_ADD_TOP_FAILURE_SITE_STATS_12H";
+	
+	public static final String YCC_NETWORK_SITE_STATS_4H="YCC_NETWORK_SITE_STATS_4H";
+	public static final String YCC_NETWORK_IAV_SITE_STATS_4H="YCC_NETWORK_IAV_SITE_STATS_4H";
+	public static final String YCC_NETWORK_ADD_SITE_STATS_4H="YCC_NETWORK_ADD_SITE_STATS_4H";
+	
+	public static final String YCC_NETWORK_SITE_STATS_12H="YCC_NETWORK_SITE_STATS_12H";
+	public static final String YCC_NETWORK_IAV_SITE_STATS_12H="YCC_NETWORK_IAV_SITE_STATS_12H";
+	public static final String YCC_NETWORK_ADD_SITE_STATS_12H="YCC_NETWORK_ADD_SITE_STATS_12H";
+	
+	
+	
+	
+	public static final String ALL_COBRANDS="All";
+	 	
+	public static final String CONSOLIDATE_STATS="channel";
+	
+	interface SplunkRepMapping {
+		public static final String SITE_ERROR_BREAKUP_REPORT="SPLUNK_SITE_ERROR_BREAKUP_REPORT";
+	}
+	public static final String GRT_THAN_100_SECS = "GRT_THAN_100_SECS";
+	public static final String _80_TO_100_SECS = "80_TO_100_SECS";
+	public static final String _60_TO_80_SECS = "60_TO_80_SECS";
+	public static final String _40_TO_60_SECS = "40_TO_60_SECS";
+	public static final String _20_TO_40_SECS = "20_TO_40_SECS";
+	public static final String _0_TO_20_SECS = "0_TO_20_SECS";
+	public static final String DURATION_OFFSET = "durationOffset";
+	public static final String DURATION = "duration";
+	public static final String TIMEZONE = "com.yodlee.userprofile.TIMEZONE";
+	public static final String DEFAULT_TIMEZONE = "PST";
+	
+	public static final String YCC_PFM_IAV_IDENTIFIER = "YCC_PFM_IAV_IDENTIFIER";
+	
+}

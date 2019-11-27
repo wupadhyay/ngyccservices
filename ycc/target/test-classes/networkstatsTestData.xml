@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<util:map id="testNeworkStatsData">
+		<entry key="networkRefreshData">
+			<value>
+				<![CDATA[
+							{
+							  "results": [
+							    {
+							      "site_id": 2852,
+							      "total_refreshes": "1066938",
+							      "successful_refreshes": "1042055",
+							      "technical_errors": "6372",
+							      "site_dependent_errors": "2406",
+							      "user_dependent_errors": "16105",
+							      "avg_latency": "4.84",
+							      "timestamp_of_insert": "1523876400"
+							    },
+							    {
+							      "site_id": 5,
+							      "total_refreshes": "545889",
+							      "successful_refreshes": "522922",
+							      "technical_errors": "6579",
+							      "site_dependent_errors": "5419",
+							      "user_dependent_errors": "10969",
+							      "avg_latency": "24.83",
+							      "timestamp_of_insert": "1523876400"
+							    },
+							    {
+							      "site_id": 643,
+							      "total_refreshes": "165489",
+							      "successful_refreshes": "151837",
+							      "technical_errors": "1937",
+							      "site_dependent_errors": "2545",
+							      "user_dependent_errors": "9170",
+							      "avg_latency": "40.45",
+							      "timestamp_of_insert": "1523876400"
+							    }
+							  ]
+							}
+				    ]]>
+
+			</value>
+		</entry>
+		<entry key="networkRefreshApiResponse">
+			<value>
+				<![CDATA[
+						{"refreshStats":{"groupBy":"PROVIDER","refreshType":"REFRESH","orderBy":"VOLUME","info":[{"id":"2852","name":"","lastModified":"2018-04-16T11:00:00Z","summary":{"totalVolume":"1778316","success":{"volume":"1716814.0","rate":"96.54"},"failure":[{"type":"TECHNICAL","volume":"14888","rate":"0.84"},{"type":"SITE","volume":"10370","rate":"0.58"},{"type":"USERACTIONREQUIRED","volume":"36244","rate":"2.04"}],"latency":{"min":"0.0","max":"0.0","avg":"14.29"}}}]}}
+				    ]]>
+
+			</value>
+		</entry>
+		<entry key="networkAddData">
+			<value>
+				<![CDATA[
+						{
+						  "results": [
+						    {
+						      "site_id": 2852,
+						      "total_refreshes": "2503",
+						      "successful_refreshes": "1707",
+						      "partial_success": "30",
+						      "technical_errors": "24",
+						      "site_dependent_errors": "13",
+						      "user_dependent_errors": "729",
+						      "avg_latency": "8.54",
+						      "timestamp_of_insert": "1524047531"
+						    },
+						    {
+						      "site_id": 5,
+						      "total_refreshes": "2382",
+						      "successful_refreshes": "1007",
+						      "partial_success": "129",
+						      "technical_errors": "166",
+						      "site_dependent_errors": "64",
+						      "user_dependent_errors": "1016",
+						      "avg_latency": "95.46",
+						      "timestamp_of_insert": "1524047531"
+						    },
+						    {
+						      "site_id": 643,
+						      "total_refreshes": "9242",
+						      "successful_refreshes": "5547",
+						      "partial_success": "92",
+						      "technical_errors": "1020",
+						      "site_dependent_errors": "255",
+						      "user_dependent_errors": "2328",
+						      "avg_latency": "98.08",
+						      "timestamp_of_insert": "1524047531"
+						    }
+						  ]
+						}
+				    ]]>
+
+			</value>
+		</entry>
+		<entry key="networkAddApiResponse">
+			<value>
+				<![CDATA[
+						{"refreshStats":{"groupBy":"PROVIDER","refreshType":"ADD","orderBy":"VOLUME","info":[{"id":"2852","name":"","lastModified":"2018-04-18T10:32:11Z","summary":{"totalVolume":"14127","success":{"volume":"8261.0","rate":"58.48"},"failure":[{"type":"TECHNICAL","volume":"1210","rate":"8.57"},{"type":"SITE","volume":"332","rate":"2.35"},{"type":"USERACTIONREQUIRED","volume":"4073","rate":"28.83"}],"latency":{"min":"0.0","max":"0.0","avg":"81.77"},"partialSuccess":{"volume":"251.0","rate":"1.78"}}}]}}
+				    ]]>
+
+			</value>
+		</entry>
+		<entry key="networkIavData">
+			<value>
+				<![CDATA[
+						{
+						  "results": [
+						    {
+						      "site_id": 2852,
+						      "total_refreshes": "9765",
+						      "successful_refreshes": "6455",
+						      "technical_errors": "26",
+						      "site_dependent_errors": "0",
+						      "user_dependent_errors": "3284",
+						      "avg_latency": "2.91",
+						      "timestamp_of_insert": "1524114613"
+						    },
+						    {
+						      "site_id": 5,
+						      "total_refreshes": "11907",
+						      "successful_refreshes": "3821",
+						      "technical_errors": "66",
+						      "site_dependent_errors": "101",
+						      "user_dependent_errors": "7919",
+						      "avg_latency": "114.86",
+						      "timestamp_of_insert": "1524114613"
+						    },
+						    {
+						      "site_id": 643,
+						      "total_refreshes": "11411",
+						      "successful_refreshes": "8021",
+						      "technical_errors": "51",
+						      "site_dependent_errors": "54",
+						      "user_dependent_errors": "3285",
+						      "avg_latency": "10.92",
+						      "timestamp_of_insert": "1524114613"
+						    }
+						  ]
+						}
+				    ]]>
+
+			</value>
+		</entry>
+		<entry key="newworkIavApiResponse">
+			<value>
+				<![CDATA[
+						{"refreshStats":{"groupBy":"PROVIDER","refreshType":"IAV","orderBy":"VOLUME","info":[{"id":"2852","name":"","lastModified":"2018-04-19T05:10:13Z","summary":{"totalVolume":"33083","success":{"volume":"18297.0","rate":"55.31"},"failure":[{"type":"TECHNICAL","volume":"143","rate":"0.43"},{"type":"SITE","volume":"155","rate":"0.47"},{"type":"USERACTIONREQUIRED","volume":"14488","rate":"43.79"}],"latency":{"min":"0.0","max":"0.0","avg":"45.97"}}}]}}
+				    ]]>
+
+			</value>
+		</entry>
+	</util:map>
+</beans>

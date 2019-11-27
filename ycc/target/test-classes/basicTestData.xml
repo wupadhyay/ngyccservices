@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<util:map id="testBasicYCCData">
+		<entry key="testCobrandDetails">
+			<value>
+				<![CDATA[{
+						  "cobrandDetail": {
+						    "cobrandId": "99",
+						    "appId": "94AAC319-CF5E-4733-AA42-CA88C79C656D"
+						  }
+						}
+				    ]]>
+
+			</value>
+		</entry>
+		<entry key="cobrandCredentials">
+			<value>
+				<![CDATA[{
+						  "cobrand": {
+						    "cobrandLogin": "yodlee",
+						    "cobrandPassword": "yodlee"
+						  }
+						}
+				    ]]>
+
+			</value>
+		</entry>
+		<entry key="userCredentials">
+			<value>
+				<![CDATA[{
+						  "user": {
+						    "loginName": "kondal5",
+						    "password": "Test123"
+						  }
+						}
+				    ]]>
+
+			</value>
+		</entry>
+		<entry key="notificationFilterDetails">
+			<value>
+				<![CDATA[{
+						  "filter": {
+						    "cobrandId": "99"
+						    
+						  }
+						}
+				    ]]>
+
+			</value>
+		</entry>
+		<entry key="siteFilterDetails">
+			<value>
+				<![CDATA[{
+						  "filter": {
+						    "cobrandId": "99"
+						    
+						  }
+						}
+				    ]]>
+
+			</value>
+		</entry>
+		<entry key="refreshTestDetails">
+			<value>
+				<![CDATA[
+						{
+						  "refreshDetails": {
+						    "cobrandId": "99",
+						    "logdinCobrandId": "99",
+						    "channelId":"2"
+						   }
+						}		
+				]]>
+			</value>
+		</entry>
+		<entry key="qatestCobrandDetails">
+			<value>
+				<![CDATA[{
+						  "cobrandDetail": {
+						    "cobrandId": "10000004",
+						    "appId": "17CBE222A42161A3FF450E47CF4C1A00"
+						  }
+						}
+				    ]]>
+
+			</value>
+		</entry>
+		<entry key="qacobrandCredentials">
+			<value>
+				<![CDATA[{
+						  "cobrand": {
+						    "cobrandLogin": "yodlee_10000004",
+						    "cobrandPassword": "yodlee123"
+						  }
+						}
+				    ]]>
+
+			</value>
+		</entry>
+		<entry key="qauserCredentials">
+			<value>
+				<![CDATA[{
+						  "user": {
+						    "loginName": "sitest",
+						    "password": "Test@1234"
+						  }
+						}
+				    ]]>
+
+			</value>
+		</entry>
+		<entry key="qanotificationFilterDetails">
+			<value>
+				<![CDATA[{
+						  "filter": {
+						    "cobrandId": "10000004"
+						    
+						  }
+						}
+				    ]]>
+
+			</value>
+		</entry>
+		<entry key="qasiteFilterDetails">
+			<value>
+				<![CDATA[{
+						  "filter": {
+						    "cobrandId": "10000004"
+						    
+						  }
+						}
+				    ]]>
+
+			</value>
+		</entry>
+		<entry key="qarefreshTestDetails">
+			<value>
+				<![CDATA[
+						{
+						  "refreshDetails": {
+						    "cobrandId": "10000004",
+						     "logdinCobrandId": "10000004",
+						    "channelId":"10007176"
+						   }
+						}		
+				]]>
+			</value>
+		</entry>
+	</util:map>
+</beans>

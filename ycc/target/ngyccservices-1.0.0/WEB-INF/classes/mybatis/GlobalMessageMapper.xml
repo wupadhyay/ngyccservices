@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="globalMessageMapper">
+	<resultMap type="com.yodlee.ycc.dapi.mybatis.bean.GlobalMessage" id="GlobalMessage">
+		<id property="id" column="global_message_id" />
+		<result property="title" column="title" />
+		<result property="description" column="description" />
+		<result property="impact" column="impact" />
+		<result property="issueTypeIds" column="NOTIFICATION_ISSUE_IDS" />
+		<result property="lastUpdated" column="ROW_LAST_UPDATED" typeHandler="com.yodlee.ycc.dapi.mybatis.handler.DateTypeHandler"/>
+		<result property="issueCreatedDate" column="ROW_CREATED" typeHandler="com.yodlee.ycc.dapi.mybatis.handler.DateTypeHandler"/>
+		<result property="categoryId" column="NOTIFICATION_CAT_ID" />
+		<result property="expectedResolutionTime" column="END_TIME" typeHandler="com.yodlee.ycc.dapi.mybatis.handler.DateTypeHandler"/>
+		<result property="statusId" column="GLOBAL_MESSAGE_STATUS_ID" />
+		<result property="issueStartDate" column="START_TIME" typeHandler="com.yodlee.ycc.dapi.mybatis.handler.DateTypeHandler"/>
+		<result property="provider.id" column="SITE_ID" />
+		<result property="provider.containerStr" column="CONTAINERS" />
+		<result property="provider.name" column="DISPLAY_NAME" />
+		<result property="updates" column="notifications" typeHandler="com.yodlee.ycc.dapi.mybatis.handler.NotificationTypeHandler"/>
+	</resultMap>
+	<select id="globalMessages" resultMap="GlobalMessage" parameterType="com.yodlee.ycc.dapi.mybatis.bean.GlobalMessageFilter">
+			SELECT
+			gm.GLOBAL_MESSAGE_ID,
+			gm.TITLE,
+			gm.DESCRIPTION,
+			gm.IMPACT,
+			gm.NOTIFICATION_ISSUE_IDS,
+			gm.ROW_CREATED,
+			gm.ROW_LAST_UPDATED,
+			gm.NOTIFICATION_CAT_ID,
+			gm.END_TIME,
+			gm.GLOBAL_MESSAGE_STATUS_ID,
+			gm.START_TIME,
+			gm.SITE_ID,
+			gm.CONTAINERS,
+			gm.DISPLAY_NAME,
+			CURSOR(
+				SELECT
+					nd.EXTERNAL_UPDATE_LOG,
+					nd.MEM_ID,
+					nd.ROW_CREATED,
+					nd.ROW_LAST_UPDATED
+					FROM
+					NOTIFICATION_DETAILS nd
+				WHERE
+					nd.GLOBAL_MESSAGE_ID = gm.GLOBAL_MESSAGE_ID
+			) AS notifications
+		FROM
+			global_message gm,
+			COB_GLOBAL_MESSAGE cgm
+		WHERE
+			gm.GLOBAL_MESSAGE_ID = cgm.GLOBAL_MESSAGE_ID
+			AND cgm.COBRAND_ID = #{cobrandId}
+			<if test="siteIds != null">
+				<![CDATA[AND gm.site_id in ]]>
+				<foreach item="siteId" collection="siteIds" open="(" separator="," close=")">
+					#{siteId}
+				</foreach>
+			</if>
+			<choose>
+		      <when test="hasResolvedStatus">
+				<choose>
+			      <when test="statusIds != null and statusIds.size() >0 ">
+			      		<![CDATA[AND (gm.GLOBAL_MESSAGE_STATUS_ID in ]]>
+						<foreach item="statusId" collection="statusIds" open="(" separator="," close=")">
+							#{statusId}
+						</foreach>
+						 OR (gm.GLOBAL_MESSAGE_STATUS_ID = 7  and gm.ROW_LAST_UPDATED > sysdate-2))
+			      </when>
+			       <otherwise>
+			       		AND gm.GLOBAL_MESSAGE_STATUS_ID = 7 
+			       </otherwise>
+			     </choose>
+		      </when>
+		      <otherwise>
+		      	<if test="statusIds != null">
+			        <![CDATA[AND gm.GLOBAL_MESSAGE_STATUS_ID in ]]>
+					<foreach item="statusId" collection="statusIds" open="(" separator="," close=")">
+						#{statusId}
+					</foreach>
+				</if>
+		      </otherwise>
+		   </choose>
+			
+	</select>
+
+</mapper>

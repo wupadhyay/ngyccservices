@@ -1,0 +1,11 @@
+Enumeration,Value,DOM,Type,Description
+AssetClass,<DOM>,,,
+BondType,<DOM>,,,
+BondClass,<DOM>,,,
+CallType,<DOM>,,,
+ESOPType,<DOM>,StockOptionType,,
+CouponFrequency,<DOM>,CouponFreq,,
+HoldingType,<DOM>,,,
+MutualFundType,<DOM>,,,
+OptionType,<DOM>,,,
+PlanOptionType,<DOM>,,,

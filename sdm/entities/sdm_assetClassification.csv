@@ -1,0 +1,4 @@
+Entity,Attribute,Qualifier,Reference,DOM,Type,Default,Description,Values
+assetClassificationList,,,,assetClassification,,<ORDER BY>asc classificationType;asc classificationValue,,
+,classificationType,,,categoryName,,,,
+,classificationValue,,,classificationName,,,,

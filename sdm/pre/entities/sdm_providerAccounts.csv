@@ -1,0 +1,38 @@
+Entity,Attribute,Container,Qualifier,Reference,DOM,Type,Description
+providerAccount,,,,,MemSiteAcc,,
+,id,,,,,,
+,providerId,,,,siteId,,
+,lastUpdated,,,,rowLastUpdated,<FORMAT>DateTime,
+,isManual,,,,isCustomExt,,
+,createdDate,,,,rowCreated,<FORMAT>DateTime,
+,isDeleted,,,,isDisabled,boolean,
+,enablement,,,,,<FILTER>,
+,refreshInfo,,,,,<ENTITY>RefreshInfo,
+,aggregationSource,,,,aggregationSourceExt,,
+,status,,,,statusExt,,
+,requestId,,,,transactionId,,
+,profile,,,,profileExt,,
+,dataSetInfo,,,,,,
+,updateInitTime,,,,,,
+RefreshInfo,,,,,CacheInfo,,
+,statusCode,,,,code,,Error code
+,statusMessage,,,,errorMessageExt,,Detailed error description
+,lastRefreshed,,,,lastSuccessfulRefreshTime,<FORMAT>DateTime,The balance and the details last successfully updated
+,lastRefreshAttempt,,,,lastUpdateAttempt,<FORMAT>DateTime,The last attempt made to refresh the account
+,nextRefreshScheduled,,,,nextUpdate,<FORMAT>DateTime,Next refresh scheduled time
+,lastUpdated,,,,,,
+,,,,,,,
+DataSetInfo,,,,,,,
+,name,,,,,,
+,additionalStatus,,,,,,
+,updateEligibility,,,,,,
+,lastUpdated,,,,,,
+,lastUpdateAttempt,,,,,,
+,,,,,,,
+SiteClassificationMap,,,,,,,
+,id,,,,,,
+,siteClassificationId,,,,siteClassificationId,,
+,lastUpdated,,,,rowLastUpdated,<FORMAT>DateTime,
+,createdDate,,,,rowCreated,,
+,isDeleted,,,,isDeleted,,
+,siteId,,,,siteId,,

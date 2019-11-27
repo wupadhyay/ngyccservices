@@ -1,0 +1,6 @@
+Enumeration,Value,DOM,Type,Description
+AccountStatus,<DOM>,,,
+AccountType,<DOM>,AcctType,,
+ItemAccountStatus,<DOM>,,,
+DataPointSource,<DOM>,,,
+LoanInterestRateType,<DOM>,,,

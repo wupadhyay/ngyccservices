@@ -1,0 +1,7 @@
+Entity,Attribute,Qualifier,Reference,DOM,Type,Description,Values
+Containers,,,,Tag,,,
+,id,,,,,,
+,containerName,,,tag,,,
+,criteria,,containerName,,,,
+,name,,containerName,,,,
+,ownership,,,,<FILTER>,,

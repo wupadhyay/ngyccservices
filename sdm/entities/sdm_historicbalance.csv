@@ -1,0 +1,34 @@
+Entity,Attribute,Container,Qualifier,Reference,DOM,Type,Default,Description
+DailyAccountDataPoint,,,,,,,<ORDER BY>date;id<TOP>500,
+,id,,,,dailyAccountDataPointId,,,
+,accountId,,,,itemAccountId,,,The account from which the datapoint was made
+,balance,,,,balance,<COMPONENT>Money,,
+,date,,,,normalisedDayTime,<FORMAT>Date,,
+,asOfDate,,,,refreshTime,<FORMAT>Date,,
+,isAsset,,,,isAsset,,,
+,status,,,,,<FILTER>,,Status of the account
+,lastDays,,,,,<FILTER>,,
+,dataSourceType,,,,dataPointSourceId,<ENUM>DataPointSource,,
+,balancex,,,,balanceExt,<COMPONENT>Money,,
+WeeklyAccountDataPoint,,,,,,,<ORDER BY>date;id<TOP>500,
+,id,,,,weeklyAccountDataPointId,,,
+,accountId,,,,itemAccountId,,,The account from which the datapoint was made
+,balance,,,,balance,<COMPONENT>Money,,
+,date,,,,normalisedWeekTime,<FORMAT>Date,,
+,asOfDate,,,,refreshTime,<FORMAT>Date,,
+,isAsset,,,,isAsset,,,
+,status,,,,,<FILTER>,,Status of the account
+,lastDays,,,,,<FILTER>,,
+,dataSourceType,,,,dataPointSourceId,<ENUM>DataPointSource,,
+,balancex,,,,balanceExt,<COMPONENT>Money,,
+MonthlyAccountDataPoint,,,,,,,<ORDER BY>date;id<TOP>500,
+,id,,,,monthlyAccountDataPointId,,,
+,accountId,,,,itemAccountId,,,The account from which the datapoint was made
+,balance,,,,balance,<COMPONENT>Money,,
+,date,,,,normalisedMonthTime,<FORMAT>Date,,
+,asOfDate,,,,refreshTime,<FORMAT>Date,,
+,isAsset,,,,isAsset,,,
+,status,,,,,<FILTER>,,Status of the account
+,lastDays,,,,,<FILTER>,,
+,dataSourceType,,,,dataPointSourceId,<ENUM>DataPointSource,,
+,balancex,,,,balanceExt,<COMPONENT>Money,,

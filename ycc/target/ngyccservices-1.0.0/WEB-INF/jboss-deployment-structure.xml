@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-deployment-structure>
+    <deployment>
+		<dependencies>
+            <system export="true">
+                <paths>
+                    <path name="com/sun/xml/internal/stream/util"/>
+                </paths>
+            </system>
+       </dependencies> 
+       <exclusions>
+          <module name="org.apache.commons.logging" />
+	      <module name="org.apache.log4j" />
+	      <module name="org.jboss.logging" />
+	      <module name="org.jboss.logging.jul-to-slf4j-stub" />
+	      <module name="org.jboss.logmanager" />
+	      <module name="org.jboss.logmanager.log4j" />
+	      <module name="org.slf4j" />
+	      <module name="org.slf4j.impl" />
+       </exclusions>
+      <resources>
+         <resource-root path="WEB-INF/lib/ingrianNAE-8.5.000.jar" use-physical-code-source="true"/>
+      </resources>
+    </deployment>
+</jboss-deployment-structure>

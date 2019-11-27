@@ -1,0 +1,97 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>customdomyccx</artifactId>
+	<version>1.0.0</version>
+	<name>customdomyccx</name>
+	<description>customdomyccx</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>domx</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>dom</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>service-engine-runtime</artifactId>
+			<version>2.0.6</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>service-engine-common</artifactId>
+			<version>2.0.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>service-engine</artifactId>
+			<version>2.0.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>ycommon</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>util-filtering</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>cacheservice</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>cachesupportutil</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<parent>
+		<groupId>com.yodlee.nextgen</groupId>
+		<artifactId>ysl.service</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../</relativePath>
+	</parent>
+
+	<build>
+		<finalName>${project.artifactId}-${project.version}</finalName>
+		<sourceDirectory>src</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+					<exclude>.classpath</exclude>
+					<exclude>.project</exclude>
+				</excludes>
+
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

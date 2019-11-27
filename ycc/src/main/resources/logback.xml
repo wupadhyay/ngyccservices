@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Licensed to the Yodlee Infotech Private Limited Logback configuration 
+	for Yodlee Customer Care App @Authour Kondalarao Navuluri @Date Jan 16, 2017 -->
+<configuration name="YslLogger" debug="true">
+
+	<property resource="logback.properties" />
+
+	<appender name="YslLog"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+		<file>${LOGS_HOME}/${LOG_FOLDER}/${LOG_FILENAME}.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${LOGS_HOME}/${LOG_FOLDER}/%d{yyyy-MM-dd,aux}/logfile_${LOG_FILENAME}.%d{yyyy-MM-dd}%i.log
+			</fileNamePattern>
+			<maxFileSize>50MB</maxFileSize>
+			<maxHistory>200</maxHistory>
+			<totalSizeCap>30GB</totalSizeCap>
+		</rollingPolicy>
+
+		<encoder>
+			<charset>UTF-8</charset>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{60} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{60} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	<logger name="org.springframework">
+		<level value="INFO" />
+	</logger>
+
+	<logger name="org.apache.http">
+		<level value="INFO" />
+	</logger>
+	<logger name="com.jayway.jsonpath.internal">
+		<level value="INFO" />
+	</logger>
+	<root level="${LOG_LEVEL}">
+		<appender-ref ref="YslLog" />
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>

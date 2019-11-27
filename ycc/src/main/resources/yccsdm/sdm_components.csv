@@ -1,0 +1,11 @@
+Component,Attribute,JSONPath,Type,Description
+breakups,,,,
+,range,,<ENUM>Range,
+,volume,volumeExtn,,
+,rate,rateExtn,,
+success,,,,
+,volume,successVolumeExtn,,
+,rate,successRateExtn,,
+successdetails,,,,
+,volume,$.results[0].SUCCESSFUL_REFRESHES,,
+,rate,$.results[0].SUCCESS_PER,,

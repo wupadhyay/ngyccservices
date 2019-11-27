@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+   <util:map id="restBridgeConfigurationMaps">
+        <entry key="resetPasswordRestBridgeConfig" value-ref="resetPasswordRestBridgeConfiguration"/>
+        <entry key="changePasswordRestBridgeConfig" value-ref="changePasswordRestBridgeConfiguration"/>
+		 <entry key="getTokenRestBridgeConfig" value-ref="getTokenRestBridgeConfiguration"/>
+    </util:map>
+    
+      
+	
+	<util:map id="resetPasswordRestBridgeConfiguration">
+	 <entry key="restBridgeRequestParams" value-ref="resetBridgeRequestParamsConfig"/>
+	 <entry key="restBridgeResponseParams" value-ref="resetBridgeResponseParamsConfig"/>
+	</util:map>
+	
+	<util:map id="resetBridgeRequestParamsConfig">
+        <entry key="cobSessionToken" value="request_cobSession"/>
+		<entry key="restURI" value="/v1.0/jsonsdk/PasswordResetManagement/getPasswordResetUserContextFromToken"/>
+		<entry key="token" value="request_token"/>
+		<!-- <entry key="jsonProcessingNeeded" value="yes"/>-->
+		
+	</util:map>
+	
+	
+	
+	<util:map id="resetBridgeResponseParamsConfig">
+	<entry key="responseDependentFlow"   value-ref="resetPasswordresponseDependentFlowConfiguration"/>
+	</util:map>
+	
+	<util:map id="resetPasswordresponseDependentFlowConfiguration" map-class="java.util.TreeMap">
+        <entry key="1" value-ref="subFlowConfigurationOne"/>
+		<entry key="2" value-ref="subFlowConfigurationTwo"/>
+	</util:map>
+	
+	
+	<util:map id="subFlowConfigurationOne">
+	   <entry key="cobSessionToken" value="request_cobSession"/>
+		<entry key="userSessionToken" value="request_userSession"/>
+		<entry key="restURI" value="/v1.0/jsonsdk/PasswordResetManagement/setSessionForValidToken"/>
+		<entry key="token" value="token"/>
+	</util:map>
+	
+	<util:map id="subFlowConfigurationTwo">
+        <entry key="cobSessionToken" value="request_cobSession"/>
+		<entry key="userSessionToken" value="request_userSession"/>
+		<entry key="restURI" value="/v1.0/jsonsdk/PasswordResetManagement/changePassword"/>
+		<entry key="token" value="request_token"/>
+		<entry key="newCredentials.loginName" value="request_loginName"/>
+		<entry key="newCredentials.password" value="request_newPassword"/>
+		<entry key="newCredentials.objectInstanceType" value="com.yodlee.ext.login.PasswordCredentials"/>
+			
+	</util:map>
+	
+	 <util:map id="changePasswordRestBridgeConfiguration">
+	 <entry key="restBridgeRequestParams" value-ref="changePasswordBridgeRequestParamsConfig"/>
+	 <entry key="restBridgeResponseParams" value-ref="changePasswordrestBridgeResponseParamsConfig"/>
+	</util:map>
+	
+	<util:map id="changePasswordBridgeRequestParamsConfig">
+        <entry key="cobSessionToken" value="request_cobSession"/>
+		<entry key="userSessionToken" value="request_userSession"/>
+		<entry key="restURI" value="/v1.0/jsonsdk/Login/changeCredentials"/>
+		<entry key="oldUserCredentials.loginName" value="request_loginName"/>
+		<entry key="oldUserCredentials.password" value="request_oldPassword"/>
+		<entry key="oldUserCredentials.objectInstanceType" value="com.yodlee.ext.login.PasswordCredentials"/>
+		<entry key="newUserCredentials.loginName" value="request_loginName"/>
+		<entry key="newUserCredentials.password" value="request_newPassword"/>
+		<entry key="newUserCredentials.objectInstanceType" value="com.yodlee.ext.login.PasswordCredentials"/>	
+		
+	</util:map>
+	
+	<util:map id="changePasswordrestBridgeResponseParamsConfig">
+	</util:map>
+	
+	 <util:map id="getTokenRestBridgeConfiguration">
+	 <entry key="restBridgeRequestParams" value-ref="getTokendBridgeRequestParamsConfig"/>
+	 <entry key="restBridgeResponseParams" value-ref="getTokenBridgeResponseParamsConfig"/>
+	</util:map>
+	
+	<util:map id="getTokendBridgeRequestParamsConfig">
+        <entry key="cobSessionToken" value="request_cobSession"/>
+		<entry key="restURI" value="/v1.0/jsonsdk/PasswordResetManagement/getToken"/>
+		<entry key="username" value="request_loginName"/>
+					
+	</util:map>
+	
+	<util:map id="getTokenBridgeResponseParamsConfig">
+	</util:map>
+	
+	
+	
+</beans>

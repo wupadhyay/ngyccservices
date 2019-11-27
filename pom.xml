@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>ngyccservicesparent</artifactId>
+	<groupId>com.yodlee.nextgen</groupId>
+	<version>1.0.0</version>
+	<name>ngyccservicesparent</name>
+	<packaging>pom</packaging>
+	<description>ngyccservicesparent</description>
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<artifactgrpid>com.yodlee.nextgen</artifactgrpid>
+		<artifactversion_1>31_11</artifactversion_1>
+		<buildnumber>${BUILD_NUMBER}</buildnumber>
+		<patchnumber>${PATCH_NUMBER}</patchnumber>
+		
+	</properties>
+	 <modules>
+		<module>yccdomx</module>
+		<module>ycc</module>
+	</modules>
+	<repositories>
+		<repository>
+			<id>nexus-deploy</id>
+			<url>http://192.168.210.73:8081/nexus/content/groups/public/</url>
+		</repository>
+		<repository>
+			<id>nexus-deploy2</id>
+			<url>http://192.168.210.73:8081/nexus/content/repositories/yodlee/</url>
+		</repository>
+	</repositories>
+	<distributionManagement>
+		<repository>
+			<id>Nexus</id>
+			<name>Yodlee Releases</name>
+			<!--url>https://sdp-dev-nexus.corp.yodlee.com/nexus/content/repositories/yodlee</url -->
+			<url>https://sdp-qa-nexus.corp.yodlee.com:1443/nexus/content/repositories/yodlee</url>
+		</repository>
+
+	</distributionManagement>
+
+	<build>
+		<finalName>${project.artifactId}-${project.version}</finalName>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

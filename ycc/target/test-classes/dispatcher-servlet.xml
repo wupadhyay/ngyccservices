@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd"
+	xmlns:mvc="http://www.springframework.org/schema/mvc">
+
+
+	<import resource="classpath:ChannelRefreshTestData.xml" />
+	<import resource="classpath:basicTestData.xml" />
+	<import resource="classpath:RefreshesTestData.xml" />
+	<import resource="classpath:ChannelIavRefreshStatData.xml" />
+	<import resource="classpath:networkstatsTestData.xml" />
+	   <import resource="classpath:RestBridgeConfiguration.xml"/>
+	   <import resource="classpath:AddAccountRefreshStatData.xml"/>
+
+	 <context:property-placeholder location="classpath*:com/yodlee/config/*.properties" ignore-unresolvable="true" ignore-resource-not-found="true"/>
+    <context:property-placeholder location="classpath*:DomConfig.properties" ignore-unresolvable="true" ignore-resource-not-found="true"/>
+ 	<context:property-placeholder location="classpath*:com/yodlee/restbridge/RestBridge.properties" ignore-unresolvable="true" ignore-resource-not-found="true"/>
+ 	<context:property-placeholder location="classpath*:cache-service.properties" ignore-unresolvable="true" ignore-resource-not-found="true"/>
+	
+    <context:annotation-config />
+    
+    <context:component-scan base-package="com.yodlee.config" />
+    <context:component-scan base-package="com.yodlee.nextgen.logging" />
+    <context:component-scan base-package="com.yodlee.webhook.notifications" />
+    <context:component-scan base-package="com.yodlee.dom" />
+    <context:component-scan base-package="com.yodlee.yccdom" />
+	<context:component-scan base-package="com.yodlee.nextgen.engine" />
+    <context:component-scan base-package="com.yodlee.security.init" />
+    <context:component-scan base-package="com.yodlee.ycc.dapi.webapp" />
+    <context:component-scan base-package="com.yodlee.dapi.service"/>
+	<context:component-scan base-package="com.yodlee.cache" />
+	<context:component-scan base-package="com.yodlee.oracle.notifications"/>
+    <context:component-scan base-package="com.yodlee.nextgen.lucene" />
+    <context:component-scan base-package="com.yodlee.rest.api.queries" />
+    <context:component-scan base-package="com.yodlee.dc" />
+    <context:component-scan base-package="com.yodlee.nextgen.mqservice"/>
+    <context:component-scan base-package="com.yodlee.restbridge" />
+
+    <context:component-scan base-package="com.yodlee.ycc.stats.db.*" />
+      <context:component-scan base-package="com.yodlee.ycc.notification" />
+    <context:component-scan base-package="com.yodlee.ycc.dapi.context" />
+    <context:component-scan base-package="com.yodlee.ycc.dapi.utils" />
+    <context:component-scan base-package="com.yodlee.rest.api.queries" />
+    <context:component-scan base-package="com.yodlee.nextgen.subrand"/>
+    <context:component-scan base-package="com.yodlee.ycc.dapi.*" />
+   
+  
+	 
+    <!-- uncomment below to generate the json of ycc swagger so that YAMLs can be generated -->
+     <!--  <bean id="swaggerConfig" class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration" />
+	<mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/" />
+	<mvc:resources mapping="/webjars/**"
+		location="classpath:/META-INF/resources/webjars/" />  -->
+    <context:annotation-config/>
+    
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+          <property name="locations">
+            <list>
+                <value>classpath*:com/yodlee/restbridge/RestBridge.properties</value>
+                <value>classpath*:errorMessages.properties</value>
+            </list>
+          </property>
+    </bean>
+    
+    <mvc:annotation-driven ignore-default-model-on-redirect="true" >
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+            	<property name="supportedMediaTypes" value="application/json; charset=UTF-8" />
+            </bean>
+            <bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper">
+					<bean
+						class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean"
+						p:failOnEmptyBeans="false" p:indentOutput="true">
+						<property name="serializers">
+							<array>
+								<bean class="com.yodlee.nextgen.util.CustomSerializer" />
+							</array>
+						</property>
+					</bean>
+				</property>
+			</bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <property name="corePoolSize" value="10"/>
+        <property name="maxPoolSize" value="15"/>
+        <property name="waitForTasksToCompleteOnShutdown" value="true"/>
+    </bean>
+    
+     <bean id="contextProvider" 	class="com.yodlee.framework.runtime.shared.context.ThreadLocalContextProvider">
+		<property name="contextClass" 	value="com.yodlee.framework.runtime.shared.context.ContextStub">
+		</property>
+	</bean>
+	
+	<bean id="contextProviderRegistry"  class="com.yodlee.framework.runtime.shared.context.ContextProviderRegistry" factory-method="getInstance">
+		<property name="contextProvider">
+			<ref bean="contextProvider" />
+		</property>
+	</bean>
+	
+    <mvc:interceptors>
+    	<bean class="com.yodlee.ycc.dapi.interceptors.ContextInterceptor"/>
+    	<bean class="com.yodlee.ycc.dapi.interceptors.ResourceAuthenticationInterceptor"/>
+   	 	<bean class="com.yodlee.ycc.dapi.interceptors.SessionAuthenticationInterceptor"/>
+		<bean class="com.yodlee.ycc.dapi.interceptors.CacheControlInterceptor" />    	
+    </mvc:interceptors>
+    
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+
+</beans>

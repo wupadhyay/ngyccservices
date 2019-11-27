@@ -1,0 +1,112 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>yccdomx</artifactId>
+	<groupId>com.yodlee.nextgen</groupId>
+	<version>1.0.0</version>
+	<name>yccdomx</name>
+	<description>yccdomx</description>
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<artifactgrpid>com.yodlee.nextgen</artifactgrpid>
+		<artifactversion_1>31_10</artifactversion_1>
+		
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>dom</artifactId>
+			<version>${artifactversion_1}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>domx</artifactId>
+			<version>${artifactversion_1}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>yccdom</artifactId>
+			<version>${artifactversion_1}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>service-engine-runtime</artifactId>
+			<version>${artifactversion_1}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>service-engine-common</artifactId>
+			<version>${artifactversion_1}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>service-engine</artifactId>
+			<version>${artifactversion_1}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>ycommon</artifactId>
+			<version>${artifactversion_1}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>util-filtering</artifactId>
+			<version>${artifactversion_1}</version>
+		</dependency>
+
+		<!-- <dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>cache.service</artifactId>
+			<version>1.0.0</version>
+		</dependency> -->
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>cacheservice</artifactId>
+			<version>${artifactversion_1}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.yodlee.nextgen</groupId>
+			<artifactId>cachesupportutil</artifactId>
+			<version>${artifactversion_1}</version>
+		</dependency>
+	</dependencies>
+
+	<!--<parent>
+		<groupId>com.yodlee.nextgen</groupId>
+		<artifactId>core.services.accessors</artifactId>
+		<version>0.0.1</version>
+		<relativePath>../coresupportaccessors</relativePath>
+	</parent>-->
+
+	<build>
+		<finalName>${project.artifactId}-${project.version}</finalName>
+		<sourceDirectory>src</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+					<exclude>.classpath</exclude>
+					<exclude>.project</exclude>
+				</excludes>
+
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

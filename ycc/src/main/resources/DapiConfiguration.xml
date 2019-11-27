@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+   <util:map id="dapiConfigurationMaps">
+       <entry key="dataPointsQuery">
+       <value><![CDATA[select  dataPoints_.* ,
+       CASE WHEN balance is null THEN '' ELSE '' END as data_source_type  from ( select dataPoints_.{data_point_primary_key} , dataPoints_.BALANCE,dataPoints_.{normalized_time} as {normalized_time} ,  
+       dataPoints_.ITEM_ACCOUNT_ID ,dataPoints_.IS_ASSET ,DECODE(dataPoints_.DATA_POINT_SOURCE_ID,1,'S',2,'C','CF') as data_point_source , dataPoints_.REFRESH_TIME,dataPoints_.item_account_status_id, dataPoints_.BALANCE_CURR_ID  , max(dataPoints_.balance) over (partition by dataPoints_.item_account_id, grp) as CF_BALANCE,
+       LAG(item_account_status_id, 1, null) OVER (ORDER BY {normalized_time}) AS item_account_status_id_prev,
+       LAG(item_account_id, 1, null) OVER (ORDER BY {normalized_time}) AS item_account_id_prev,
+       LAG({normalized_time}, 1, null) OVER (ORDER BY {normalized_time}) AS {normalized_time}_prev,
+       LAG(refresh_time, 1, null) OVER (ORDER BY {normalized_time}) AS refresh_time_prev,
+       LAG(balance, 1, null) OVER (ORDER BY {normalized_time}) AS balance_prev,
+       LAG(balance_curr_id, 1, null) OVER (ORDER BY {normalized_time}) AS balance_curr_id_prev,
+       LAG(IS_ASSET, 1, null) OVER (ORDER BY {normalized_time}) AS is_asset_prev 
+       from (select dataPoints_.*,count(dataPoints_.balance) over (Partition by dataPoints_.item_account_id order by dataPoints_.{data_point_primary_key}, dataPoints_.{normalized_time}) as grp 
+       from {data_point_table_name} dataPoints_  inner join ITEM_ACCOUNT itemaccoun1_ on dataPoints_.ITEM_ACCOUNT_ID=itemaccoun1_.ITEM_ACCOUNT_ID inner join CACHE_INFO cacheinfo2_ on itemaccoun1_.CACHE_ITEM_ID=cacheinfo2_.CACHE_ITEM_ID 
+        where  cacheinfo2_.COBRAND_ID={cobrandId} and dataPoints_.MEM_ID={memId} {account_id_with_status}) dataPoints_ ) dataPoints_ where   ]]></value>
+       </entry>
+       
+        <entry key="dataPointsQueryNoRecordFound">
+       <value><![CDATA[select  ITEM_ACCOUNT_ID,IS_ASSET, REFRESH_TIME ,item_account_status_id,balance as CF_BALANCE,{normalized_time},BALANCE_CURR_ID,DECODE(DATA_POINT_SOURCE_ID,1,'S',2,'C','CF') as DATA_POINT_SOURCE
+       from {data_point_table_name}  where {normalized_time} =(select  max({normalized_time}) from {data_point_table_name} where {normalized_time}<={fromDate} and
+       ITEM_ACCOUNT_ID={itemAccountId} and ( ITEM_ACCOUNT_STATUS_ID={status1} or ITEM_ACCOUNT_STATUS_ID={status2} or ITEM_ACCOUNT_STATUS_ID={status3} or ITEM_ACCOUNT_STATUS_ID={status4}))
+         and MEM_ID={memId} and ITEM_ACCOUNT_ID={itemAccountId}]]></value>
+       </entry>
+       
+       <entry key="dataPointsNetworthQueryNoRecordFound">
+       <value><![CDATA[select  ITEM_ACCOUNT_ID,IS_ASSET, REFRESH_TIME ,item_account_status_id,balance as CF_BALANCE,{normalized_time},BALANCE_CURR_ID,DECODE(DATA_POINT_SOURCE_ID,1,'S',2,'C','CF') as DATA_POINT_SOURCE
+       from {data_point_table_name}  where {normalized_time} =(select  max({normalized_time}) from {data_point_table_name} where {normalized_time}<={fromDate} and
+       ITEM_ACCOUNT_ID in ({itemAccountIds}) and ( ITEM_ACCOUNT_STATUS_ID={status1} or ITEM_ACCOUNT_STATUS_ID={status2} or ITEM_ACCOUNT_STATUS_ID={status3} or ITEM_ACCOUNT_STATUS_ID={status4}))
+        and MEM_ID={memId} and ITEM_ACCOUNT_ID in ({itemAccountIds})]]></value>
+       </entry>
+       
+       <entry key="dataPointsRootElement" value="historicalBalances"/>
+       <entry key="networthRootElement" value="networth"/>
+       <entry key="networthTotalCount">
+       <value><![CDATA[ {"networth":{"TOTAL":{"count":{totalCount}}}} ]]></value>
+       </entry>
+       
+        <entry key="dataPointTotalCount">
+       <value><![CDATA[ {"historicalBalances":{"TOTAL":{"count":{totalCount}}}} ]]></value>
+       </entry>
+       
+       
+       <entry key="fromDate">
+       <value><![CDATA[  dataPoints_.{normalized_time}>={fromDate} and ]]></value>
+       </entry>
+        <entry key="toDate">
+        <value><![CDATA[  dataPoints_.{normalized_time}<={toDate} ]]></value>
+       </entry>
+        <entry key="itemAccountId">
+        <value><![CDATA[  and dataPoints_.ITEM_ACCOUNT_ID={itemAccountId} ]]></value>
+       </entry>
+       <entry key="itemAccountIds">
+        <value><![CDATA[  and dataPoints_.ITEM_ACCOUNT_ID in ({itemAccountIds}) ]]></value>
+       </entry>
+        <entry key="accountStatus">
+        <value><![CDATA[  and ( dataPoints_.ITEM_ACCOUNT_STATUS_ID={status1} or dataPoints_.ITEM_ACCOUNT_STATUS_ID={status2} or dataPoints_.ITEM_ACCOUNT_STATUS_ID={status3} ]]></value>
+       </entry>
+        <entry key="accountStatusNonDeleted">
+        <value><![CDATA[  dataPoints_.ITEM_ACCOUNT_STATUS_ID={status4} ]]></value>
+       </entry>
+       <entry key="pagination">
+        <value><![CDATA[  and dataPoints_.CF_BALANCE is not null  ]]></value>
+       </entry>
+        <entry key="orderBy">
+        <value><![CDATA[  order by dataPoints_.{normalized_time},dataPoints_.{data_point_primary_key} ]]></value>
+       </entry>
+        <entry key="dailyAccountDataPoints" value-ref="dailyAccountDataPointsConfiguration"/>
+        <entry key="weeklyAcountDataPoints" value-ref="weeklyAcountDataPointsConfiguration"/>
+		 <entry key="monthlyAccountDataPoints" value-ref="monthlyAccountDataPointsConfiguration"/>
+    </util:map>
+    
+      
+	
+	<util:map id="dailyAccountDataPointsConfiguration">
+	 <entry key="dailyAccountDataPointsRequestParams" value-ref="dailyAccountDataPointsRequestParamsConfig"/>
+	 <entry key="dailyAccountDataPointsResponseParams" value-ref="dailyAccountDataPointsResponseParamsConfig"/>
+	</util:map>
+	
+	<util:map id="dailyAccountDataPointsRequestParamsConfig">
+        <entry key="data_point_primary_key" value="DAILY_ACCOUNT_DATA_POINT_ID"/>
+         <entry key="normalized_time" value="NORMALISED_DAY_TIME"/>
+          <entry key="data_point_table_name" value="DAILY_ACCOUNT_DATA_POINT"/>
+		
+	</util:map>
+	
+	<util:map id="dailyAccountDataPointsResponseParamsConfig">
+        <entry key="commonResponseParams" value-ref="dataPointsCommonResponseParamsConfig"/>
+        <entry key="date" value="NORMALISED_DAY_TIME"/>
+		
+	</util:map>
+	
+	
+	
+	<util:map id="dataPointsExt">
+        <entry key="amount" value="CF_BALANCE"/>
+        <entry key="currency" value="BALANCE_CURR_ID"/>
+    </util:map>
+    
+    <util:map id="weeklyAcountDataPointsConfiguration">
+	 <entry key="weeklyAccountDataPointsRequestParams" value-ref="weeklyAccountDataPointsRequestParamsConfig"/>
+	 <entry key="weeklyAccountDataPointsResponseParams" value-ref="weeklyAccountDataPointsResponseParamsConfig"/>
+	</util:map>
+	
+	<util:map id="weeklyAccountDataPointsRequestParamsConfig">
+        <entry key="data_point_primary_key" value="WEEKLY_ACCOUNT_DATA_POINT_ID"/>
+         <entry key="normalized_time" value="NORMALISED_WEEK_TIME"/>
+          <entry key="data_point_table_name" value="WEEKLY_ACCOUNT_DATA_POINT"/>
+		
+	</util:map>
+	
+	<util:map id="weeklyAccountDataPointsResponseParamsConfig">
+        <entry key="commonResponseParams" value-ref="dataPointsCommonResponseParamsConfig"/>
+        <entry key="date" value="NORMALISED_WEEK_TIME"/>
+		
+	</util:map>
+	
+	
+	  <util:map id="monthlyAccountDataPointsConfiguration">
+	 <entry key="monthlyAccountDataPointsRequestParams" value-ref="monthlyAccountDataPointsRequestParamsConfig"/>
+	 <entry key="monthlyAccountDataPointsResponseParams" value-ref="monthlyAccountDataPointsResponseParamsConfig"/>
+	</util:map>
+	
+	<util:map id="monthlyAccountDataPointsRequestParamsConfig">
+        <entry key="data_point_primary_key" value="MONTHLY_ACCOUNT_DATA_POINT_ID"/>
+         <entry key="normalized_time" value="NORMALISED_MONTH_TIME"/>
+         <entry key="data_point_table_name" value="MONTHLY_ACCOUNT_DATA_POINT"/>
+		
+	</util:map>
+	
+	<util:map id="monthlyAccountDataPointsResponseParamsConfig">
+        <entry key="commonResponseParams" value-ref="dataPointsCommonResponseParamsConfig"/>
+        <entry key="date" value="NORMALISED_MONTH_TIME"/>
+		
+	</util:map>
+	
+	<util:map id="dataPointsCommonResponseParamsConfig">
+        <entry key="accountId" value="ITEM_ACCOUNT_ID"/>
+        <entry key="isAsset" value="IS_ASSET"/>
+        <entry key="asOfDate" value="refresh_time"/>
+        <entry key="balance" value-ref="dataPointsExt"/>
+        <entry key="dataSourceType" value="data_source_type"/>
+        <entry key="accountStatusId" value="item_account_status_id"/>
+        <entry key="dataPointSourceId" value="data_point_source"/>
+ </util:map>
+	
+
+	
+</beans>

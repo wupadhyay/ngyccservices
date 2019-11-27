@@ -1,0 +1,8 @@
+Entity,Attribute,Qualifier,Reference,DOM,Type,Default,Description,Values
+HoldingGroup,,,,MemHouseHoldingGroup,,<ORDER BY>asc groupName;asc id,,
+,id,,,memHouseHoldingGroupId,,,,
+,groupName,,,,,,,
+,itemAccountHhGroupMap,,,,<ENTITY>[]itemAccountHhGroupMap,,,
+ItemAccountHhGroupMap,,,,,,,,
+,accountId,,,itemAccount.itemAccountId,,,,
+,status,,,,<FILTER>,,,

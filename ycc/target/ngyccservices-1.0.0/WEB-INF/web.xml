@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <context-param>
+		<param-name>spring.profiles.active</param-name>
+		<param-value>ysl</param-value>
+	</context-param>
+    <filter>
+	<filter-name>encodingFilter</filter-name>
+	<filter-class>org.springframework.web.filter.CharacterEncodingFilter
+	</filter-class>
+	<init-param>
+		<param-name>encoding</param-name>
+		<param-value>UTF-8</param-value>
+	</init-param>
+	<init-param>
+		<param-name>forceEncoding</param-name>
+		<param-value>true</param-value>
+	</init-param>
+   </filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> 
+    
+	
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+ 
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>    
+    
+    <security-constraint> 
+        <web-resource-collection> 
+          <web-resource-name>No Access</web-resource-name> 
+          <url-pattern>/*</url-pattern>
+	      <http-method>TRACE</http-method> 
+          <http-method>ALLOW</http-method> 
+        </web-resource-collection> 
+        <auth-constraint /> 
+    </security-constraint> 
+    
+    <!-- We now go to a servlet to decide where to redirect for the HTTP error code -->
+	<error-page>
+		<error-code>401</error-code>
+		<location>/errorCode/401</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/errorCode/403</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/errorCode/404</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/errorCode/500</location> 
+	</error-page>
+	<error-page>
+        <error-code>501</error-code>
+        <location>/errorCode/501</location> 
+    </error-page>
+    
+</web-app>
